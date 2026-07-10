@@ -1,0 +1,297 @@
+/* ============================================
+   COLOR VARIABLES — Option B: Grounded Terracotta
+   Defining colors once here means changing the whole
+   site's look later is as easy as editing these few lines.
+   ============================================ */
+:root {
+  --bg-dark: #2B2420;       /* warm near-black background */
+  --bg-card: #372F29;       /* slightly lighter panels */
+  --accent-clay: #C96F4A;   /* terracotta accent — buttons, links, highlights */
+  --accent-sage: #7C9A82;   /* sage green — secondary highlight */
+  --text-cream: #FBF7F2;    /* main text color on dark background */
+  --text-muted: #C9BFB4;    /* softer secondary text */
+}
+
+/* ============================================
+   RESET & BASE
+   Browsers add their own default margins/fonts —
+   this wipes that so we start from a clean slate.
+   ============================================ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--bg-dark);
+  color: var(--text-cream);
+  font-family: 'Segoe UI', Helvetica, Arial, sans-serif;
+  line-height: 1.7;
+}
+
+h2 {
+  font-size: 28px;
+  color: var(--accent-clay);
+  margin-bottom: 24px;
+}
+
+h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+  color: var(--text-cream);
+}
+
+section {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 80px 24px;
+}
+
+/* ============================================
+   NAVBAR
+   ============================================ */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  background: rgba(43, 36, 32, 0.95);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.logo {
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 28px;
+  list-style: none;
+}
+
+.nav-links a {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 15px;
+  transition: color 0.2s ease;
+}
+
+.nav-links a:hover {
+  color: var(--accent-clay);
+}
+
+/* ============================================
+   HERO SECTION
+   ============================================ */
+.hero {
+  text-align: center;
+  padding: 90px 24px 70px;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.profile-photo {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--accent-clay);
+  margin-bottom: 28px;
+  display: block;
+  max-width: 100%;
+}
+
+.headline {
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--text-cream);
+  margin-bottom: 28px;
+}
+
+.btn {
+  display: inline-block;
+  background: var(--accent-clay);
+  color: var(--bg-dark);
+  font-weight: 600;
+  text-decoration: none;
+  padding: 13px 28px;
+  border-radius: 6px;
+  transition: background 0.2s ease;
+}
+
+.btn:hover {
+  background: var(--accent-sage);
+}
+
+/* ============================================
+   ABOUT
+   ============================================ */
+#about p {
+  color: var(--text-muted);
+  font-size: 16px;
+}
+
+/* ============================================
+   PROJECTS
+   ============================================ */
+.project-link {
+  text-decoration: none;
+  display: block;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.project-link:hover .project {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(201, 111, 74, 0.15);
+}
+
+.project {
+  background: var(--bg-card);
+  border-left: 3px solid var(--accent-clay);
+  padding: 24px 28px;
+  border-radius: 6px;
+  margin-bottom: 20px;
+}
+
+.project p {
+  color: var(--text-muted);
+  font-size: 15px;
+}
+
+.project-cta {
+  display: inline-block;
+  color: var(--accent-clay);
+  font-size: 14px;
+  font-weight: 600;
+  margin-top: 12px;
+}
+
+.more-projects {
+  margin-top: 36px;
+  padding: 24px 28px;
+  background: var(--bg-card);
+  border-left: 3px solid var(--accent-sage);
+  border-radius: 6px;
+}
+
+.more-projects ul {
+  list-style: none;
+}
+
+.more-projects li {
+  color: var(--text-muted);
+  font-size: 14.5px;
+  margin-bottom: 12px;
+}
+
+.more-projects strong {
+  color: var(--text-cream);
+}
+
+/* ============================================
+   SKILLS
+   ============================================ */
+.skill-list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.skill-list li {
+  background: var(--bg-card);
+  color: var(--accent-sage);
+  padding: 8px 18px;
+  border-radius: 20px;
+  font-size: 14px;
+  border: 1px solid rgba(124, 154, 130, 0.4);
+}
+
+/* ============================================
+   CV
+   ============================================ */
+#cv {
+  text-align: center;
+}
+
+#cv p {
+  color: var(--text-muted);
+  margin-bottom: 24px;
+}
+
+#cv .btn {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+#cv .btn:hover {
+  opacity: 0.7;
+}
+
+/* ============================================
+   CONTACT
+   ============================================ */
+#contact {
+  text-align: center;
+}
+
+#contact p {
+  color: var(--text-muted);
+  margin-bottom: 24px;
+}
+
+.contact-links {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.contact-links a {
+  color: var(--accent-clay);
+  text-decoration: none;
+  font-weight: 500;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s ease;
+}
+
+.contact-links a:hover {
+  border-color: var(--accent-clay);
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+footer {
+  text-align: center;
+  padding: 30px;
+  color: var(--text-muted);
+  font-size: 13px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+
+/* ============================================
+   MOBILE RESPONSIVENESS
+   Below 600px wide screens, stack the nav links
+   and shrink some spacing so it fits phones well.
+   ============================================ */
+@media (max-width: 600px) {
+  nav {
+    flex-direction: column;
+    gap: 14px;
+    padding: 16px 20px;
+  }
+  .nav-links {
+    gap: 18px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  section {
+    padding: 60px 20px;
+  }
+}
