@@ -1,26 +1,26 @@
 /* ============================================
-   COLOR VARIABLES — Option B: Grounded Terracotta
-   Defining colors once here means changing the whole
-   site's look later is as easy as editing these few lines.
+   COLOR VARIABLES — Preserved from Original
    ============================================ */
 :root {
   --bg-dark: #2B2420;       /* warm near-black background */
   --bg-card: #372F29;       /* slightly lighter panels */
-  --accent-clay: #C96F4A;   /* terracotta accent — buttons, links, highlights */
-  --accent-sage: #7C9A82;   /* sage green — secondary highlight */
-  --text-cream: #FBF7F2;    /* main text color on dark background */
-  --text-muted: #C9BFB4;    /* softer secondary text */
+  --accent-clay: #C96F4A;   /* terracotta accent */
+  --accent-sage: #7C9A82;   /* sage green secondary */
+  --text-cream: #FBF7F2;    /* main text */
+  --text-muted: #C9BFB4;    /* secondary text */
 }
 
 /* ============================================
    RESET & BASE
-   Browsers add their own default margins/fonts —
-   this wipes that so we start from a clean slate.
    ============================================ */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
@@ -49,7 +49,7 @@ section {
 }
 
 /* ============================================
-   NAVBAR
+   NAVBAR — Preserved
    ============================================ */
 nav {
   position: sticky;
@@ -79,20 +79,36 @@ nav {
   text-decoration: none;
   font-size: 15px;
   transition: color 0.2s ease;
+  padding: 8px 0;
+  border-bottom: 2px solid transparent;
 }
 
-.nav-links a:hover {
+.nav-links a:hover,
+.nav-links a:focus-visible {
   color: var(--accent-clay);
+  border-bottom-color: var(--accent-clay);
+}
+
+.nav-links a:focus-visible {
+  outline: 2px solid var(--accent-clay);
+  outline-offset: 2px;
 }
 
 /* ============================================
-   HERO SECTION
+   HERO SECTION — REDUCED by ~25%
    ============================================ */
 .hero {
   text-align: center;
-  padding: 90px 24px 70px;
+  padding: 60px 24px 50px;
   max-width: 640px;
   margin: 0 auto;
+  min-height: auto;
+}
+
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .profile-photo {
@@ -101,16 +117,19 @@ nav {
   border-radius: 50%;
   object-fit: cover;
   border: 3px solid var(--accent-clay);
-  margin-bottom: 28px;
+  margin-bottom: 24px;
   display: block;
   max-width: 100%;
+  /* Ensure image is centered */
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .headline {
   font-size: 22px;
   font-weight: 500;
   color: var(--text-cream);
-  margin-bottom: 28px;
+  margin-bottom: 24px;
 }
 
 .btn {
@@ -121,11 +140,27 @@ nav {
   text-decoration: none;
   padding: 13px 28px;
   border-radius: 6px;
-  transition: background 0.2s ease;
+  transition: all 0.2s ease;
+  border: 2px solid var(--accent-clay);
+  cursor: pointer;
 }
 
-.btn:hover {
+.btn:hover,
+.btn:focus-visible {
   background: var(--accent-sage);
+  border-color: var(--accent-sage);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(201, 111, 74, 0.2);
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--accent-clay);
+  outline-offset: 2px;
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
 }
 
 /* ============================================
@@ -137,30 +172,91 @@ nav {
 }
 
 /* ============================================
-   PROJECTS
+   PROJECTS — ENHANCED
    ============================================ */
 .project-link {
   text-decoration: none;
   display: block;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: all 0.3s ease;
+  border-radius: 6px;
+  margin-bottom: 20px;
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+
+.project-link:hover {
+  transform: translateY(-6px);
 }
 
 .project-link:hover .project {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 20px rgba(201, 111, 74, 0.15);
+  box-shadow: 0 12px 32px rgba(201, 111, 74, 0.2);
+  border-left-color: var(--accent-sage);
+}
+
+.project-link:focus-visible {
+  outline-color: var(--accent-clay);
 }
 
 .project {
   background: var(--bg-card);
   border-left: 3px solid var(--accent-clay);
-  padding: 24px 28px;
   border-radius: 6px;
-  margin-bottom: 20px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.project-image-container {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  background: rgba(201, 111, 74, 0.1);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.project-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.project-link:hover .project-image {
+  transform: scale(1.05);
+}
+
+.image-placeholder {
+  position: absolute;
+  color: var(--text-muted);
+  font-size: 14px;
+  font-weight: 500;
+  background: rgba(43, 36, 32, 0.7);
+  padding: 8px 16px;
+  border-radius: 4px;
+}
+
+.project-content {
+  padding: 24px 28px;
 }
 
 .project p {
   color: var(--text-muted);
   font-size: 15px;
+  line-height: 1.6;
+}
+
+.project p strong {
+  color: var(--accent-clay);
+  font-weight: 600;
+}
+
+.project-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 12px;
 }
 
 .project-cta {
@@ -168,7 +264,27 @@ nav {
   color: var(--accent-clay);
   font-size: 14px;
   font-weight: 600;
-  margin-top: 12px;
+  transition: all 0.2s ease;
+}
+
+.project-link:hover .project-cta {
+  color: var(--accent-sage);
+}
+
+.project-icons {
+  display: flex;
+  gap: 12px;
+}
+
+.icon {
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.icon:hover {
+  transform: scale(1.15);
 }
 
 .more-projects {
@@ -186,34 +302,66 @@ nav {
 .more-projects li {
   color: var(--text-muted);
   font-size: 14.5px;
-  margin-bottom: 12px;
+  margin-bottom: 16px;
+  line-height: 1.6;
 }
 
 .more-projects strong {
   color: var(--text-cream);
 }
 
+.more-projects strong + em {
+  color: var(--accent-clay);
+}
+
 /* ============================================
-   SKILLS
+   SKILLS — CATEGORIZED
    ============================================ */
+.skills-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 32px;
+}
+
+.skill-category {
+  /* Each category stands alone */
+}
+
+.category-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--accent-clay);
+  margin-bottom: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
 .skill-list {
   list-style: none;
   display: flex;
   flex-wrap: wrap;
-  gap: 12px;
+  gap: 10px;
 }
 
 .skill-list li {
   background: var(--bg-card);
   color: var(--accent-sage);
-  padding: 8px 18px;
-  border-radius: 20px;
+  padding: 8px 16px;
+  border-radius: 4px;
   font-size: 14px;
   border: 1px solid rgba(124, 154, 130, 0.4);
+  transition: all 0.2s ease;
+}
+
+.skill-list li:hover,
+.skill-list li:focus-visible {
+  background: rgba(124, 154, 130, 0.15);
+  border-color: var(--accent-sage);
+  transform: translateY(-2px);
 }
 
 /* ============================================
-   CV
+   CV SECTION
    ============================================ */
 #cv {
   text-align: center;
@@ -224,61 +372,134 @@ nav {
   margin-bottom: 24px;
 }
 
-#cv .btn {
-  opacity: 0.7;
-  cursor: not-allowed;
+.btn-cv {
+  /* Enabled by default now */
+  opacity: 1;
+  cursor: pointer;
 }
 
-#cv .btn:hover {
-  opacity: 0.7;
+.cv-note {
+  margin-top: 12px;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.cv-note code {
+  background: rgba(201, 111, 74, 0.1);
+  color: var(--accent-clay);
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-family: 'Courier New', monospace;
 }
 
 /* ============================================
-   CONTACT
+   CONTACT SECTION — EXPANDED
    ============================================ */
 #contact {
   text-align: center;
 }
 
-#contact p {
-  color: var(--text-muted);
-  margin-bottom: 24px;
+#contact > p {
+  color: var(--text-cream);
+  margin-bottom: 28px;
+  font-size: 16px;
 }
 
-.contact-links {
-  display: flex;
-  justify-content: center;
-  gap: 24px;
-  flex-wrap: wrap;
-}
-
-.contact-links a {
+#contact p strong {
   color: var(--accent-clay);
-  text-decoration: none;
-  font-weight: 500;
-  border-bottom: 1px solid transparent;
-  transition: border-color 0.2s ease;
 }
 
-.contact-links a:hover {
-  border-color: var(--accent-clay);
+.contact-container {
+  background: var(--bg-card);
+  border-radius: 6px;
+  padding: 32px;
+  border: 1px solid rgba(201, 111, 74, 0.15);
+}
+
+.contact-info {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 24px;
+}
+
+.contact-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.contact-icon {
+  font-size: 24px;
+  display: block;
+}
+
+.contact-item a,
+.contact-item span {
+  color: var(--text-cream);
+  text-decoration: none;
+  font-size: 15px;
+  transition: all 0.2s ease;
+}
+
+.contact-item a:hover {
+  color: var(--accent-clay);
+  text-decoration: underline;
+}
+
+.contact-item a:focus-visible {
+  outline: 2px solid var(--accent-clay);
+  outline-offset: 4px;
+  border-radius: 2px;
 }
 
 /* ============================================
-   FOOTER
+   FOOTER — ENHANCED
    ============================================ */
 footer {
   text-align: center;
-  padding: 30px;
+  padding: 40px 24px;
   color: var(--text-muted);
   font-size: 13px;
   border-top: 1px solid rgba(255,255,255,0.08);
 }
 
+footer p {
+  margin: 4px 0;
+}
+
+.footer-credit {
+  margin-top: 8px;
+  font-size: 12px;
+  color: rgba(201, 179, 180, 0.7);
+}
+
+/* ============================================
+   ACCESSIBILITY & FOCUS STATES
+   ============================================ */
+:focus-visible {
+  outline: 2px solid var(--accent-clay);
+  outline-offset: 2px;
+}
+
+/* Skip to main content link (for screen readers) */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--accent-clay);
+  color: var(--bg-dark);
+  padding: 8px;
+  text-decoration: none;
+  z-index: 100;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
 /* ============================================
    MOBILE RESPONSIVENESS
-   Below 600px wide screens, stack the nav links
-   and shrink some spacing so it fits phones well.
    ============================================ */
 @media (max-width: 600px) {
   nav {
@@ -286,12 +507,65 @@ footer {
     gap: 14px;
     padding: 16px 20px;
   }
+
   .nav-links {
-    gap: 18px;
+    gap: 12px;
     flex-wrap: wrap;
     justify-content: center;
   }
+
+  .hero {
+    padding: 40px 20px 35px;
+  }
+
+  .profile-photo {
+    width: 120px;
+    height: 120px;
+    margin-bottom: 16px;
+  }
+
+  .headline {
+    font-size: 18px;
+  }
+
   section {
     padding: 60px 20px;
+  }
+
+  .skills-container {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .contact-info {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  .project-footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .project-image-container {
+    height: 150px;
+  }
+}
+
+/* ============================================
+   PERFORMANCE: Lazy loading optimization
+   Images load only when visible
+   ============================================ */
+.project-image {
+  will-change: transform;
+}
+
+/* Reduce animation on devices that prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }
